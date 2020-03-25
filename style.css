@@ -1,0 +1,32 @@
+#container {
+  display: grid;
+  height: 500px;
+  grid-template-columns: 25% 1fr 1fr 1fr 1fr 25%;
+  grid-template-rows: 25% 1fr 25%;
+}
+
+.kick {
+  grid-row: 2/3;
+  margin: 1em;
+  background-color: hsl(50, 60%, 60%);
+}
+
+.kick.active {
+  background-color: hsl(50, 40%, 40%);
+}
+
+.one {
+  grid-column: 2/3;
+}
+
+.two {
+  grid-column: 3/4;
+}
+
+.three {
+  grid-column: 4/5;
+}
+
+.four {
+  grid-column: 5/6;
+}
