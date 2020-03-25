@@ -4,15 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script src="sequencer.js"></script>
+    <script src="sequencer.js" defer></script>
     <title>Nick's Fancy Beat Sequencer</title>
   </head>
   <body>
     <div id="container">
-      <div class="kick one"></div>
-      <div class="kick two"></div>
-      <div class="kick three"></div>
-      <div class="kick four"></div>
+      <div data-drum="kick" class="kick beat1"></div>
+      <div data-drum="kick" class="kick beat2"></div>
+      <div data-drum="kick" class="kick beat3"></div>
+      <div data-drum="kick" class="kick beat4"></div>
     </div>
+    <div id="controls">
+      <button class="play"></button>
+    </div>
+    <audio id="kick" src="/sounds/171104__dwsd__kick-gettinglaid.wav"></audio>
   </body>
 </html>
