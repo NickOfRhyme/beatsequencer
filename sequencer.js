@@ -2,8 +2,12 @@ let currBeatNum = 0;
 let beatInterval;
 const totalBeats = 4;
 const playPauseButton = document.querySelector("button.play");
+const drums = document.querySelectorAll("#container > *");
 
 playPauseButton.addEventListener("click", playPauseToggle);
+drums.forEach(drum => {
+  drum.addEventListener("click", drumChoiceToggle);
+});
 
 function startBeat(BPM = 100) {
   beatInterval = setInterval(advanceBeat, (60 / BPM) * 1000);
@@ -21,7 +25,8 @@ function advanceBeat() {
 
   console.log(currBeatDisplay);
 
-  playSound(currBeatDisplay.dataset.drum);
+  if (currBeatDisplay.classList.contains("chosen"))
+    playSound(currBeatDisplay.dataset.drum);
 }
 
 function pauseBeat() {
@@ -41,6 +46,10 @@ function playSound(drumType) {
   sound.pause();
   sound.currentTime = 0;
   sound.play();
+}
+
+function drumChoiceToggle({ target: { classList } }) {
+  classList.toggle("chosen");
 }
 
 function playPauseToggle({ target: { classList } }) {

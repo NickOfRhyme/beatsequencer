@@ -30,6 +30,11 @@ button.pause {
 }
 
 .kick.active {
+  box-sizing: border-box;
+  border: 2px solid hsl(50, 40%, 40%);
+}
+
+.kick.chosen {
   background-color: hsl(50, 40%, 40%);
 }
 
