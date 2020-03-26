@@ -9,24 +9,26 @@ drums.forEach(drum => {
   drum.addEventListener("click", drumChoiceToggle);
 });
 
-function startBeat(BPM = 100) {
+function startBeat(BPM = 140) {
   beatInterval = setInterval(advanceBeat, (60 / BPM) * 1000);
 }
 
 function advanceBeat() {
-  const lastBeatDisplay = document.querySelector(`.beat${currBeatNum}`);
-  lastBeatDisplay && lastBeatDisplay.classList.remove("active");
+  if (currBeatNum >= 1) {
+    const lastBeatColumn = document.querySelectorAll(`.beat${currBeatNum}`);
+    lastBeatColumn.forEach(beat => {
+      beat.classList.remove("active");
+    });
+  }
 
   currBeatNum === totalBeats ? (currBeatNum = 1) : currBeatNum++;
 
-  const currBeatDisplay = document.querySelector(`.beat${currBeatNum}`);
+  const currBeatColumn = document.querySelectorAll(`.beat${currBeatNum}`);
 
-  currBeatDisplay.classList.add("active");
-
-  console.log(currBeatDisplay);
-
-  if (currBeatDisplay.classList.contains("chosen"))
-    playSound(currBeatDisplay.dataset.drum);
+  currBeatColumn.forEach(beat => {
+    beat.classList.add("active");
+    if (beat.classList.contains("chosen")) playSound(beat.dataset.drum);
+  });
 }
 
 function pauseBeat() {
@@ -35,8 +37,10 @@ function pauseBeat() {
 
 function stopBeat() {
   pauseBeat();
-  const currBeatDisplay = document.querySelector(`.beat${currBeatNum}`);
-  currBeatDisplay.classList.remove("active");
+  const currBeatColumn = document.querySelectorAll(`.beat${currBeatNum}`);
+  currBeatColumn.forEach(beat => {
+    beat.classList.remove("active");
+  });
   currBeatNum = 0;
 }
 

@@ -2,7 +2,7 @@
   display: grid;
   height: 400px;
   grid-template-columns: 15% 1fr 1fr 1fr 1fr 15%;
-  grid-template-rows: 15% 1fr 15%;
+  grid-template-rows: 15% 1fr 1fr 1fr 1fr 15%;
 }
 
 button {
@@ -31,11 +31,56 @@ button.pause {
 
 .kick.active {
   box-sizing: border-box;
-  border: 2px solid hsl(50, 40%, 40%);
+  border: 8px solid hsl(50, 80%, 80%);
 }
 
 .kick.chosen {
   background-color: hsl(50, 40%, 40%);
+}
+
+.snare {
+  grid-row: 3/4;
+  margin: 1em;
+  background-color: hsl(95, 60%, 60%);
+}
+
+.snare.active {
+  box-sizing: border-box;
+  border: 8px solid hsl(95, 80%, 80%);
+}
+
+.snare.chosen {
+  background-color: hsl(95, 40%, 40%);
+}
+
+.hihat {
+  grid-row: 4/5;
+  margin: 1em;
+  background-color: hsl(140, 60%, 60%);
+}
+
+.hihat.active {
+  box-sizing: border-box;
+  border: 8px solid hsl(140, 80%, 80%);
+}
+
+.hihat.chosen {
+  background-color: hsl(140, 40%, 40%);
+}
+
+.cymbal {
+  grid-row: 5/6;
+  margin: 1em;
+  background-color: hsl(185, 60%, 60%);
+}
+
+.cymbal.active {
+  box-sizing: border-box;
+  border: 8px solid hsl(185, 80%, 80%);
+}
+
+.cymbal.chosen {
+  background-color: hsl(185, 40%, 40%);
 }
 
 .beat1 {
