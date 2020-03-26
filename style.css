@@ -1,8 +1,58 @@
+body {
+  background-color: hsl(27.5, 60%, 85%);
+}
+
 #container {
   display: grid;
   height: 400px;
-  grid-template-columns: 15% 1fr 1fr 1fr 1fr 15%;
+  grid-template-columns: 15% 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 15%;
   grid-template-rows: 15% 1fr 1fr 1fr 1fr 15%;
+}
+
+#playback-controls {
+  margin: 0 auto;
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+}
+
+#BPM-controls {
+  margin: 3em;
+  text-align: center;
+}
+
+#BPM-controls > input {
+  -webkit-appearance: none;
+  width: 400px;
+}
+
+#BPM-controls > input:disabled {
+  display: none;
+}
+
+#BPM-controls > input::-webkit-slider-runnable-track {
+  background: hsl(27.5, 60%, 15%);
+  border-radius: 0.5em;
+  height: 1em;
+}
+
+#BPM-controls > input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: hsl(27.5, 60%, 50%);
+  border-radius: 1em;
+  margin-top: -0.5em;
+  height: 2em;
+  width: 2em;
+}
+
+#BPM-display {
+  color: hsl(117.5, 40%, 15%);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+#BPM-display > #value {
+  font-size: 5em;
 }
 
 button {
@@ -14,13 +64,30 @@ button {
 
 button.play {
   border-width: 30px 0px 30px 60px;
-  border-color: transparent transparent transparent limegreen;
+  border-color: transparent transparent transparent hsl(120, 100%, 50%);
+}
+
+button.play:active {
+  border-color: transparent transparent transparent hsl(120, 100%, 30%);
 }
 
 button.pause {
   border-style: solid;
   border-width: 0 30px 0 30px;
-  border-color: yellow;
+  border-color: hsl(60, 100%, 50%);
+}
+
+button.pause:active {
+  border-color: hsl(60, 100%, 30%);
+}
+
+button.stop {
+  border: none;
+  background-color: hsl(0, 100%, 50%);
+}
+
+button.stop:active {
+  background-color: hsl(0, 100%, 30%);
 }
 
 .kick {
@@ -29,12 +96,12 @@ button.pause {
   background-color: hsl(50, 60%, 60%);
 }
 
-.kick.active {
+.kick.playing {
   box-sizing: border-box;
   border: 8px solid hsl(50, 80%, 80%);
 }
 
-.kick.chosen {
+.kick.cued {
   background-color: hsl(50, 40%, 40%);
 }
 
@@ -44,12 +111,12 @@ button.pause {
   background-color: hsl(95, 60%, 60%);
 }
 
-.snare.active {
+.snare.playing {
   box-sizing: border-box;
   border: 8px solid hsl(95, 80%, 80%);
 }
 
-.snare.chosen {
+.snare.cued {
   background-color: hsl(95, 40%, 40%);
 }
 
@@ -59,12 +126,12 @@ button.pause {
   background-color: hsl(140, 60%, 60%);
 }
 
-.hihat.active {
+.hihat.playing {
   box-sizing: border-box;
   border: 8px solid hsl(140, 80%, 80%);
 }
 
-.hihat.chosen {
+.hihat.cued {
   background-color: hsl(140, 40%, 40%);
 }
 
@@ -74,12 +141,12 @@ button.pause {
   background-color: hsl(185, 60%, 60%);
 }
 
-.cymbal.active {
+.cymbal.playing {
   box-sizing: border-box;
   border: 8px solid hsl(185, 80%, 80%);
 }
 
-.cymbal.chosen {
+.cymbal.cued {
   background-color: hsl(185, 40%, 40%);
 }
 
@@ -97,4 +164,20 @@ button.pause {
 
 .beat4 {
   grid-column: 5/6;
+}
+
+.beat5 {
+  grid-column: 6/7;
+}
+
+.beat6 {
+  grid-column: 7/8;
+}
+
+.beat7 {
+  grid-column: 8/9;
+}
+
+.beat8 {
+  grid-column: 9/10;
 }

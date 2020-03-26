@@ -1,23 +1,30 @@
-let currBeatNum = 0;
 let beatInterval;
-const totalBeats = 4;
+let currBeatNum = 0;
+let beatsPM = 120;
+const totalBeats = 8;
 const playPauseButton = document.querySelector("button.play");
+const stopButton = document.querySelector("button.stop");
+const beatsPMslider = document.querySelector("#BPM-slider");
+const beatsPMdisplay = document.querySelector("#BPM-display > #value");
 const drums = document.querySelectorAll("#container > *");
 
 playPauseButton.addEventListener("click", playPauseToggle);
+stopButton.addEventListener("click", stopBeat);
+beatsPMslider.addEventListener("input", changeBPM);
 drums.forEach(drum => {
   drum.addEventListener("click", drumChoiceToggle);
 });
 
-function startBeat(BPM = 140) {
-  beatInterval = setInterval(advanceBeat, (60 / BPM) * 1000);
+function startBeat(beatsPM) {
+  beatInterval = setInterval(advanceBeat, (60 / beatsPM) * 1000);
+  beatsPMslider.disabled = !beatsPMslider.disabled;
 }
 
 function advanceBeat() {
   if (currBeatNum >= 1) {
     const lastBeatColumn = document.querySelectorAll(`.beat${currBeatNum}`);
     lastBeatColumn.forEach(beat => {
-      beat.classList.remove("active");
+      beat.classList.remove("playing");
     });
   }
 
@@ -26,21 +33,27 @@ function advanceBeat() {
   const currBeatColumn = document.querySelectorAll(`.beat${currBeatNum}`);
 
   currBeatColumn.forEach(beat => {
-    beat.classList.add("active");
-    if (beat.classList.contains("chosen")) playSound(beat.dataset.drum);
+    beat.classList.add("playing");
+    if (beat.classList.contains("cued")) playSound(beat.dataset.drum);
   });
 }
 
 function pauseBeat() {
   clearInterval(beatInterval);
+  beatsPMslider.disabled = !beatsPMslider.disabled;
 }
 
 function stopBeat() {
   pauseBeat();
   const currBeatColumn = document.querySelectorAll(`.beat${currBeatNum}`);
   currBeatColumn.forEach(beat => {
-    beat.classList.remove("active");
+    beat.classList.remove("playing");
   });
+
+  if (playPauseButton.classList.contains("pause")) {
+    playPauseToggle({ target: playPauseButton });
+  }
+
   currBeatNum = 0;
 }
 
@@ -53,17 +66,22 @@ function playSound(drumType) {
 }
 
 function drumChoiceToggle({ target: { classList } }) {
-  classList.toggle("chosen");
+  classList.toggle("cued");
 }
 
 function playPauseToggle({ target: { classList } }) {
   if (classList.contains("play")) {
     classList.remove("play");
     classList.add("pause");
-    startBeat();
+    startBeat(beatsPM);
   } else {
     classList.remove("pause");
     classList.add("play");
-    stopBeat();
+    pauseBeat();
   }
+}
+
+function changeBPM({ target: { value } }) {
+  beatsPMdisplay.textContent = value;
+  beatsPM = +value;
 }

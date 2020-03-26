@@ -13,21 +13,44 @@
       <div data-drum="kick" class="kick beat2"></div>
       <div data-drum="kick" class="kick beat3"></div>
       <div data-drum="kick" class="kick beat4"></div>
+      <div data-drum="kick" class="kick beat5"></div>
+      <div data-drum="kick" class="kick beat6"></div>
+      <div data-drum="kick" class="kick beat7"></div>
+      <div data-drum="kick" class="kick beat8"></div>
       <div data-drum="snare" class="snare beat1"></div>
       <div data-drum="snare" class="snare beat2"></div>
       <div data-drum="snare" class="snare beat3"></div>
       <div data-drum="snare" class="snare beat4"></div>
+      <div data-drum="snare" class="snare beat5"></div>
+      <div data-drum="snare" class="snare beat6"></div>
+      <div data-drum="snare" class="snare beat7"></div>
+      <div data-drum="snare" class="snare beat8"></div>
       <div data-drum="hihat" class="hihat beat1"></div>
       <div data-drum="hihat" class="hihat beat2"></div>
       <div data-drum="hihat" class="hihat beat3"></div>
       <div data-drum="hihat" class="hihat beat4"></div>
+      <div data-drum="hihat" class="hihat beat5"></div>
+      <div data-drum="hihat" class="hihat beat6"></div>
+      <div data-drum="hihat" class="hihat beat7"></div>
+      <div data-drum="hihat" class="hihat beat8"></div>
       <div data-drum="cymbal" class="cymbal beat1"></div>
       <div data-drum="cymbal" class="cymbal beat2"></div>
       <div data-drum="cymbal" class="cymbal beat3"></div>
       <div data-drum="cymbal" class="cymbal beat4"></div>
+      <div data-drum="cymbal" class="cymbal beat5"></div>
+      <div data-drum="cymbal" class="cymbal beat6"></div>
+      <div data-drum="cymbal" class="cymbal beat7"></div>
+      <div data-drum="cymbal" class="cymbal beat8"></div>
     </div>
-    <div id="controls">
+    <div id="playback-controls">
       <button class="play"></button>
+      <button class="stop"></button>
+    </div>
+    <div id="BPM-controls">
+      <p id="BPM-display">
+        <span id="value">120</span><span id="unit">BPM</span>
+      </p>
+      <input type="range" id="BPM-slider" min="30" max="500" value="120" />
     </div>
     <audio id="kick" src="/sounds/171104__dwsd__kick-gettinglaid.wav"></audio>
     <audio id="snare" src="/sounds/183106__dwsd__snr-doitlive.wav"></audio>
